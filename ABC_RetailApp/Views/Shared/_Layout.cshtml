@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ABC_RetailApp</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            width: 220px;
+            background-color: #1e1e1e;
+            padding: 1rem;
+        }
+
+            .sidebar .nav-link {
+                color: #cfcfcf;
+                margin-bottom: 0.3rem;
+            }
+
+                .sidebar .nav-link.active {
+                    background-color: #3a3a3a;
+                    font-weight: bold;
+                }
+
+                .sidebar .nav-link:hover {
+                    background-color: #2a2a2a;
+                    color: #fff;
+                }
+
+        .navbar-dark {
+            background-color: #1e1e1e;
+        }
+
+        footer {
+            background-color: #1e1e1e;
+            color: #cfcfcf;
+        }
+
+        .form-control-dark {
+            background-color: #2a2a2a;
+            color: #fff;
+            border: 1px solid #444;
+        }
+
+            .form-control-dark:focus {
+                background-color: #2a2a2a;
+                color: #fff;
+                border-color: #0d6efd;
+                box-shadow: none;
+            }
+
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d-flex">
+
+        <!-- Sidebar -->
+        <nav class="sidebar d-flex flex-column">
+            <a class="d-flex align-items-center mb-4 text-white text-decoration-none fs-5 fw-bold"
+               asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="bi bi-shop fs-3 me-2"></i> ABC_RetailApp
+            </a>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home")" class="nav-link @((ViewData["Title"]?.ToString() == "Home") ? "active" : "")">
+                        <i class="bi bi-house-door-fill me-2"></i> Home
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Privacy", "Home")" class="nav-link @((ViewData["Title"]?.ToString() == "Privacy") ? "active" : "")">
+                        <i class="bi bi-shield-lock-fill me-2"></i> Privacy
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Database", "Home")" class="nav-link @((ViewData["Title"]?.ToString() == "Database") ? "active" : "")">
+                        <i class="bi bi-server me-2"></i> Database
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1 d-flex flex-column">
+
+            <!-- Top Navbar -->
+            <nav class="navbar navbar-dark px-4 shadow-sm">
+                <span class="navbar-brand mb-0 h5">@ViewData["Title"]</span>
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-person-circle me-2"></i> Admin
+                </div>
+            </nav>
+
+            <!-- Page Content -->
+            <main class="flex-fill p-4">
+                @RenderBody()
+            </main>
+
+            <!-- Footer -->
+            <footer class="py-3 text-center">
+                &copy; 2025 ABC_RetailApp - <a class="text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </footer>
+
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
